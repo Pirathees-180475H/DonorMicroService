@@ -1,13 +1,14 @@
 version: 0.2
 
 phases:
-  install:
-    runtime-versions:
-      java: corretto11
+  build:
+    commands:
+      - echo Entered the build phase...
+      - mvn clean package
   post_build:
     commands:
-      - mvn package
+      - echo Build completed successfully
 artifacts:
   files:
-    - ROOT.war
-    - .ebextensions/**/*
+    - target/donor-service.jar
+  discard-paths: yes
