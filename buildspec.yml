@@ -1,13 +1,18 @@
 version: 0.2
-
 phases:
+
+  pre_build:
+    commands:
+      - echo In the pre_build phase...
   build:
     commands:
-      -mvn clean package
+      - echo Build started on `date`
   post_build:
     commands:
-
+      - echo Build completed on `date`
+      - mvn package
+      - mv target/donor-service-0.0.1-SNAPSHOT.war donor-service-0.0.1-SNAPSHOT.war
 artifacts:
   files:
-    -target/donorService.jar
-  discard-paths: yes
+    - donor-service-0.0.1-SNAPSHOT.war
+    - .ebextensions/**/*
