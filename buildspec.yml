@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      -echo Entered the build phase...
+      -mvn clean pakage
+  post_build:
+    commands:
+      -echo Build completed successfully
+
+artifacts:
+  files:
+    -target/donorService.jar
+  discard-paths: yes
